@@ -33,6 +33,7 @@ public class HuffmanTree {
 			comb.right = right;
 			comb.left = left;
 			queue.offer(comb);
+			//testing git
 		}
 		
 		root = queue.peek();
