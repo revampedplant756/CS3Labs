@@ -26,7 +26,8 @@ public class Disk implements Comparable<Disk>{
 	public String toString() {
 		return files.toString();
 	}
-
+	
+	//test
 	@Override
 	public int compareTo(Disk o) {
 		if(this.storage > o.getStorage()) {
