@@ -7,40 +7,58 @@ public class LFSR
     /** constructor to create LFSR with the given initial seed and tap */
     public LFSR(String seed, int tap)
     { 
-       //TODO
+       N = seed.length();
+       this.tap = tap;
+       reg = new int[N];
+       for(int e = 0; e < seed.length();e++) {
+    	   reg[e] = Integer.parseInt(seed.substring(e, e+1));
+       }
     }
   
     /** simulate one step and return the new bit as 0 or 1 */
     public int step()
     {
-    	//TODO
+    	int newBit = reg[0] ^ reg[reg.length-1-tap];
     	
-    	return 0; //replace
+    	for(int e = 0; e < reg.length-1; e++) {
+    		reg[e] = reg[e+1];
+    	}
+    	
+    	reg[reg.length-1] = newBit;
+    
+    	return newBit;
     }
   
     /** simulate k steps and return k-bit integer */
     public int generate(int k) 
     {
-    	//TODO
+    	int val = 0;
     	
-    	return 0; //replace
+    	for(int e = 0; e < k; e++) {
+    		val = (val*2) + step();
+    	}
+    	
+    	return val;
     }
 
     @Override
     public String toString()  {
-    	//TODO
+    	String ret = "";
+    	for(int e : reg) {
+    		ret += String.valueOf(e);
+    	}
     	
-    	return null; //replace
+    	return ret;
     }
    
   
     public static void main(String[] args)  
     {
     	//In Eclipse, Ctrl + / (front slash) toggles comments of highlighted portion
-//    	test01();
-//    	test02();
-//    	test03();
-//    	test04();
+    	test01();
+    	test02();
+    	test03();
+    	test04();
     }
     
     /** test toString() and constructor */
